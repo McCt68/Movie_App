@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import eu.example.movieapp.model.Movie
 import eu.example.movieapp.navigation.MovieNavigation
 import eu.example.movieapp.ui.theme.MovieAppTheme
 
@@ -29,7 +30,6 @@ The parameter is MovieNavigation, which is a function that handles navigation be
 In MovieNavigation we set routes, to our destinations -
 The startDestination is HomeScreen -
 From HomeScreen we can call MovieNavigation with onClick to take another route to DetailsScreen.
-
  */
 
 class MainActivity : ComponentActivity() {
@@ -49,39 +49,6 @@ class MainActivity : ComponentActivity() {
 fun MyApp(content: @Composable () -> Unit) {
 	MovieAppTheme {
 		content()
-	}
-}
-
-
-
-// Arguments is a Movie Title in a string
-// and a Lambda which default to an empty lambda
-@Composable
-fun MovieRow(movie: String, onItemClick:(String)-> Unit = {}) {
-	Card(modifier = Modifier
-		.padding(4.dp)
-		.fillMaxWidth()
-		.height(130.dp)
-		.clickable {
-			onItemClick(movie)
-		},
-		shape = RoundedCornerShape(CornerSize(16.dp)),
-		elevation = 6.dp
-	){
-		Row(
-			verticalAlignment = Alignment.CenterVertically,
-			horizontalArrangement = Arrangement.Start) {
-			Surface(modifier = Modifier
-				.padding(12.dp)
-				.size(100.dp),
-			shape = RectangleShape,
-			elevation = 4.dp) {
-				Icon(
-					imageVector = Icons.Default.AccountBox,
-					contentDescription = "Movie Image")
-			}
-			Text(text = movie)
-		}
 	}
 }
 

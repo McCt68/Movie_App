@@ -15,17 +15,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import eu.example.movieapp.MovieRow
+import eu.example.movieapp.model.Movie
+import eu.example.movieapp.model.getMovies
 import eu.example.movieapp.navigation.MovieScreens
 import eu.example.movieapp.screens.details.DetailsScreen
+import eu.example.movieapp.widgets.MovieRow
 
 // Passing a navController Object. this is called in MovieNavigation.kt
 @Composable
 fun HomeScreen(navController: NavController){
 	Scaffold(topBar = {
 		TopAppBar(
-			backgroundColor = Color.Magenta,
-			elevation = 5.dp) {
+			backgroundColor = Color.LightGray,
+			elevation = 0.dp) {
 			Text(text = "Movies")
 		}
 	}) {
@@ -35,20 +37,11 @@ fun HomeScreen(navController: NavController){
 	}
 }
 
-// Takes a movieList of Strings, set to some random movies at default
+// Takes a list of Movie objects, from the data class Movie
 @Composable
 fun MainContent(
-	modifier: Modifier = Modifier,
-	movieList: List<String> = listOf(
-		"Avatar",
-		"Terminator",
-		"Olsen Banden",
-		"Kastanie Manden",
-		"Startreck",
-		"Starwars",
-		"Sorte Kugler",
-		"Aliens 3"),
-	navController: NavController) {
+	navController: NavController,
+	movieList: List<Movie> = getMovies()){
 	Column(modifier = Modifier
 		.padding(12.dp)) {
 		LazyColumn{
@@ -59,7 +52,7 @@ fun MainContent(
 					Log.d("Movie", "MainContent: $movie")
 
 					// calls navController and navigates to route: DetailsScreen
-					navController.navigate(route = MovieScreens.DetailsScreen.name)
+					navController.navigate(route = MovieScreens.DetailsScreen.name + "/$movie")
 				}
 			}}
 	}
