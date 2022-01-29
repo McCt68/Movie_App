@@ -1,7 +1,7 @@
 package eu.example.movieapp.navigation
 
-//enum is a class that holds Constants, we can reference too and use them with logic
-// The Constants should uasely be written in Uppercase ( they are not in this example)
+// enum is a class that holds Constants, we can reference too and use them with logic
+// The Constants should usually be written in Uppercase ( they are not in this example)
 
 // This enum will hold all the UI screens i can navigate too
 

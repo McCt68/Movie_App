@@ -28,7 +28,7 @@ fun HomeScreen(navController: NavController){
 		TopAppBar(
 			backgroundColor = Color.LightGray,
 			elevation = 0.dp) {
-			Text(text = "Movies")
+			Text(modifier = Modifier.padding(12.dp), text = "Movies")
 		}
 	}) {
 		MainContent(navController = navController)
